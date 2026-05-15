@@ -1,0 +1,72 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: Label
+  properties:
+    text: "O B L I T E R A T U S"
+    role: header
+    align: center
+    bold: true
+    font_size: 28
+  name: title_label
+- type: Label
+  properties:
+    text: "MASTER ABLATION SUITE - Break the chains that bind you"
+    role: subtitle
+    align: center
+    font_size: 12
+  name: subtitle_label
+- type: Label
+  properties:
+    text: ""
+    role: vram-bar
+  name: vram_display
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: tabs_panel
+  components:
+  - type: FlowPanel
+    properties: {align: center, spacing: small}
+    name: tab_buttons
+    components:
+    - type: Button
+      properties: {text: Obliterate, bold: true}
+      name: btn_obliterate
+      event_bindings: {click: btn_obliterate_click}
+    - type: Button
+      properties: {text: Benchmark}
+      name: btn_benchmark
+      event_bindings: {click: btn_benchmark_click}
+    - type: Button
+      properties: {text: Chat}
+      name: btn_chat
+      event_bindings: {click: btn_chat_click}
+    - type: Button
+      properties: {text: "A/B Compare"}
+      name: btn_ab_compare
+      event_bindings: {click: btn_ab_compare_click}
+    - type: Button
+      properties: {text: Strength Sweep}
+      name: btn_sweep
+      event_bindings: {click: btn_sweep_click}
+    - type: Button
+      properties: {text: Tourney}
+      name: btn_tourney
+      event_bindings: {click: btn_tourney_click}
+    - type: Button
+      properties: {text: Export}
+      name: btn_export
+      event_bindings: {click: btn_export_click}
+    - type: Button
+      properties: {text: Push to Hub}
+      name: btn_push_hub
+      event_bindings: {click: btn_push_hub_click}
+    - type: Button
+      properties: {text: Leaderboard}
+      name: btn_leaderboard
+      event_bindings: {click: btn_leaderboard_click}
+- type: ColumnPanel
+  properties: {col_widths: '{}', role: tab-panel}
+  name: content_panel

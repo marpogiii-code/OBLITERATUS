@@ -1,0 +1,78 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Tourney Mode"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: Label
+  properties:
+    text: "Pit abliteration methods against each other in elimination rounds."
+    font_size: 12
+    foreground: '#888'
+  name: description_label
+- type: DropDown
+  properties: {placeholder: "Select Model..."}
+  name: tourney_model_dd
+- type: Label
+  properties: {text: "Methods to Compete:", bold: true}
+- type: FlowPanel
+  properties: {spacing: small}
+  name: method_checkboxes
+  components:
+  - type: CheckBox
+    properties: {text: advanced, checked: true}
+    name: tcb_advanced
+  - type: CheckBox
+    properties: {text: basic, checked: true}
+    name: tcb_basic
+  - type: CheckBox
+    properties: {text: aggressive, checked: true}
+    name: tcb_aggressive
+  - type: CheckBox
+    properties: {text: spectral_cascade, checked: true}
+    name: tcb_spectral
+  - type: CheckBox
+    properties: {text: informed, checked: true}
+    name: tcb_informed
+  - type: CheckBox
+    properties: {text: surgical, checked: true}
+    name: tcb_surgical
+  - type: CheckBox
+    properties: {text: optimized, checked: true}
+    name: tcb_optimized
+- type: FlowPanel
+  properties: {spacing: medium}
+  components:
+  - type: DropDown
+    properties: {placeholder: "Dataset"}
+    name: tourney_dataset_dd
+  - type: DropDown
+    properties:
+      items: [["none", "none"], ["4bit", "4bit"], ["8bit", "8bit"]]
+      selected_value: none
+    name: tourney_quant_dd
+- type: Button
+  properties:
+    text: "Start Tournament"
+    bold: true
+    role: obliterate-btn
+  name: tourney_btn
+  event_bindings: {click: tourney_btn_click}
+- type: Label
+  properties: {text: "", role: status-bar}
+  name: tourney_status
+- type: Label
+  properties: {text: ""}
+  name: tourney_bracket
+- type: TextArea
+  properties:
+    role: log-box
+    placeholder: "Tournament log..."
+    height: 300
+    enabled: false
+  name: tourney_log

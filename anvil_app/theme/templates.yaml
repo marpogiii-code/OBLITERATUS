@@ -1,0 +1,5 @@
+templates:
+- name: Material Design
+  description: Standard Material Design template
+  layout: standard-page
+  components: []

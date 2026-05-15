@@ -1,0 +1,34 @@
+allow_embedding: false
+package_name: obliteratus_anvil
+name: OBLITERATUS
+startup_form: MainForm
+runtime_options:
+  client_version: '3'
+  server_version: python3-full
+  version: 3
+metadata:
+  title: OBLITERATUS
+  description: "One-click model liberation + chat playground — ported for Anvil.work"
+  logo_img: null
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: true}
+db_schema:
+  session_models:
+    columns:
+    - {name: label, type: string}
+    - {name: model_id, type: string}
+    - {name: method, type: string}
+    - {name: output_dir, type: string}
+    - {name: created, type: datetime}
+    - {name: status, type: string}
+  benchmark_results:
+    columns:
+    - {name: model_id, type: string}
+    - {name: method, type: string}
+    - {name: refusal_rate, type: number}
+    - {name: perplexity, type: number}
+    - {name: coherence, type: number}
+    - {name: elapsed_s, type: number}
+    - {name: created, type: datetime}

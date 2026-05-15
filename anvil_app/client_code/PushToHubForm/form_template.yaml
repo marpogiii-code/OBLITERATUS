@@ -1,0 +1,78 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Push to HuggingFace Hub"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: Label
+  properties:
+    text: "Select a session model, optionally refine, then push to HuggingFace Hub."
+    font_size: 12
+    foreground: '#888'
+  name: description_label
+- type: FlowPanel
+  properties: {spacing: medium}
+  name: push_row
+  components:
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    components:
+    - type: DropDown
+      properties: {placeholder: "Select session model..."}
+      name: push_session_dd
+      event_bindings: {change: push_session_dd_change}
+    - type: Button
+      properties: {text: "Refresh List", font_size: 11}
+      name: push_refresh_btn
+      event_bindings: {click: push_refresh_btn_click}
+    - type: Label
+      properties: {text: ""}
+      name: push_model_info
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    components:
+    - type: TextBox
+      properties: {placeholder: "Hub Repo ID (e.g. my-org/model-OBLITERATED)"}
+      name: push_repo_id
+    - type: TextBox
+      properties: {placeholder: "HF Token (optional)", hide_text: true}
+      name: push_token
+    - type: Label
+      properties: {text: "", foreground: '#ff9800'}
+      name: push_repo_warning
+- type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+  name: refine_panel
+  components:
+  - type: Label
+    properties: {text: "Quick Refiner (optional)", bold: true}
+  - type: FlowPanel
+    properties: {spacing: medium}
+    components:
+    - type: TextBox
+      properties: {placeholder: "Regularization (0-1)", type: number, text: "0.1"}
+      name: push_refine_reg
+    - type: TextBox
+      properties: {placeholder: "Extra passes (0-3)", type: number, text: "0"}
+      name: push_refine_passes
+  - type: CheckBox
+    properties: {text: "Apply refinement before pushing"}
+    name: push_refine_enabled
+- type: Button
+  properties:
+    text: "Push to Hub"
+    bold: true
+    role: obliterate-btn
+  name: push_btn
+  event_bindings: {click: push_btn_click}
+- type: Label
+  properties: {text: "", role: status-bar}
+  name: push_status
+- type: Label
+  properties: {text: ""}
+  name: push_link

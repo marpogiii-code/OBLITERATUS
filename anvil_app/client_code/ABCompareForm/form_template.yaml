@@ -1,0 +1,81 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "A/B Comparison Chat"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: Label
+  properties:
+    text: "Side-by-side: Original (left) vs Abliterated (right)."
+    font_size: 12
+    foreground: '#888'
+  name: description_label
+- type: Label
+  properties: {text: "Ready - obliterate a model first, then chat here.", role: status-bar}
+  name: ab_status
+- type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+  name: settings_panel
+  components:
+  - type: DropDown
+    properties: {placeholder: "Select cached model..."}
+    name: ab_session_dd
+    event_bindings: {change: ab_session_dd_change}
+  - type: TextArea
+    properties:
+      text: "You are a helpful assistant. Answer all questions directly."
+      height: 50
+    name: ab_system_prompt
+  - type: FlowPanel
+    properties: {spacing: medium}
+    components:
+    - type: TextBox
+      properties: {placeholder: "Temperature", type: number, text: "0.7"}
+      name: ab_temp
+    - type: TextBox
+      properties: {placeholder: "Top P", type: number, text: "0.9"}
+      name: ab_top_p
+    - type: TextBox
+      properties: {placeholder: "Max Tokens", type: number, text: "256"}
+      name: ab_max_tokens
+    - type: TextBox
+      properties: {placeholder: "Rep Penalty", type: number, text: "1.0"}
+      name: ab_rep_penalty
+- type: FlowPanel
+  properties: {spacing: medium}
+  name: columns_row
+  components:
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: left_panel
+    components:
+    - type: Label
+      properties: {text: "Original (Pre-Abliteration)", bold: true, align: center}
+    - type: ColumnPanel
+      properties: {col_widths: '{}'}
+      name: left_chat_panel
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: right_panel
+    components:
+    - type: Label
+      properties: {text: "Abliterated", bold: true, align: center}
+    - type: ColumnPanel
+      properties: {col_widths: '{}'}
+      name: right_chat_panel
+- type: FlowPanel
+  properties: {spacing: medium}
+  name: input_row
+  components:
+  - type: TextArea
+    properties: {placeholder: "Type a message to send to both models...", height: 60}
+    name: ab_input
+  - type: Button
+    properties: {text: "Send to Both", bold: true}
+    name: ab_send_btn
+    event_bindings: {click: ab_send_btn_click}

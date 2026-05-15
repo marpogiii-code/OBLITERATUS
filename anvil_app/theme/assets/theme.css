@@ -1,0 +1,121 @@
+/* OBLITERATUS Anvil Theme */
+
+:root {
+  --ob-bg: #0a0a1a;
+  --ob-surface: #1a1a2e;
+  --ob-surface2: #16213e;
+  --ob-primary: #e94560;
+  --ob-accent: #ff6b6b;
+  --ob-text: #e0e0e0;
+  --ob-text-muted: #888;
+  --ob-border: #333;
+  --ob-success: #4caf50;
+  --ob-warning: #ff9800;
+  --ob-font-mono: 'Share Tech Mono', monospace;
+  --ob-font-sans: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--ob-bg);
+  color: var(--ob-text);
+  font-family: var(--ob-font-sans);
+}
+
+.anvil-role-header {
+  text-align: center;
+  font-family: var(--ob-font-mono);
+  letter-spacing: 0.3em;
+  color: var(--ob-primary);
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+
+.anvil-role-header .label-text {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.anvil-role-subtitle {
+  text-align: center;
+  color: var(--ob-text-muted);
+  font-family: var(--ob-font-mono);
+  font-size: 0.9em;
+  letter-spacing: 0.15em;
+}
+
+.anvil-role-tab-panel {
+  background: var(--ob-surface);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.anvil-role-card {
+  background: var(--ob-surface2);
+  border: 1px solid var(--ob-border);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.anvil-role-log-box {
+  background: #000;
+  color: #0f0;
+  font-family: var(--ob-font-mono);
+  font-size: 0.85em;
+  border: 1px solid var(--ob-border);
+  border-radius: 4px;
+  padding: 10px;
+  white-space: pre-wrap;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.anvil-role-status-bar {
+  background: var(--ob-surface2);
+  border-left: 3px solid var(--ob-primary);
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-family: var(--ob-font-mono);
+  font-size: 0.9em;
+}
+
+.anvil-role-obliterate-btn .btn {
+  background: linear-gradient(135deg, var(--ob-primary), #c62828) !important;
+  color: white !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none !important;
+  padding: 12px 24px;
+}
+
+.anvil-role-obliterate-btn .btn:hover {
+  background: linear-gradient(135deg, var(--ob-accent), var(--ob-primary)) !important;
+}
+
+.anvil-role-chat-msg-user {
+  background: var(--ob-surface2);
+  border-radius: 12px 12px 2px 12px;
+  padding: 10px 14px;
+  margin: 4px 0;
+  text-align: right;
+}
+
+.anvil-role-chat-msg-assistant {
+  background: var(--ob-surface);
+  border: 1px solid var(--ob-border);
+  border-radius: 12px 12px 12px 2px;
+  padding: 10px 14px;
+  margin: 4px 0;
+}
+
+.anvil-role-vram-bar {
+  background: var(--ob-surface2);
+  border-radius: 4px;
+  padding: 6px 12px;
+  text-align: center;
+  font-family: var(--ob-font-mono);
+  font-size: 0.8em;
+  color: var(--ob-text-muted);
+}

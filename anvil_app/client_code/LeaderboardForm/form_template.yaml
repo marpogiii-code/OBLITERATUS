@@ -1,0 +1,27 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Community Leaderboard"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: Label
+  properties:
+    text: "Aggregated benchmark results from all OBLITERATUS instances."
+    font_size: 12
+    foreground: '#888'
+  name: description_label
+- type: Button
+  properties: {text: "Refresh Leaderboard"}
+  name: refresh_btn
+  event_bindings: {click: refresh_btn_click}
+- type: Label
+  properties: {text: ""}
+  name: leaderboard_summary
+- type: Label
+  properties: {text: "Loading leaderboard..."}
+  name: leaderboard_table

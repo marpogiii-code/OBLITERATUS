@@ -1,0 +1,91 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Benchmark"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: FlowPanel
+  properties: {spacing: medium}
+  name: mode_row
+  components:
+  - type: Button
+    properties: {text: "Multi-Method", bold: true}
+    name: btn_multi_method
+    event_bindings: {click: btn_multi_method_click}
+  - type: Button
+    properties: {text: "Multi-Model"}
+    name: btn_multi_model
+    event_bindings: {click: btn_multi_model_click}
+- type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+  name: bench_settings_panel
+  components:
+  - type: FlowPanel
+    properties: {spacing: medium}
+    components:
+    - type: DropDown
+      properties: {placeholder: "Select Model..."}
+      name: bench_model_dd
+    - type: DropDown
+      properties:
+        placeholder: "Prompt Volume"
+        items:
+        - ["33 (fast)", "33 (fast)"]
+        - ["66 (better signal)", "66 (better signal)"]
+        - ["99 (classic)", "99 (classic)"]
+        - ["256 (balanced)", "256 (balanced)"]
+      name: bench_volume_dd
+    - type: DropDown
+      properties: {placeholder: "Dataset"}
+      name: bench_dataset_dd
+  - type: Label
+    properties:
+      text: "Select methods to benchmark:"
+      bold: true
+  - type: FlowPanel
+    properties: {spacing: small}
+    name: methods_checkboxes
+    components:
+    - type: CheckBox
+      properties: {text: "advanced", checked: true}
+      name: cb_advanced
+    - type: CheckBox
+      properties: {text: "basic", checked: true}
+      name: cb_basic
+    - type: CheckBox
+      properties: {text: "aggressive"}
+      name: cb_aggressive
+    - type: CheckBox
+      properties: {text: "spectral cascade"}
+      name: cb_spectral
+    - type: CheckBox
+      properties: {text: "informed"}
+      name: cb_informed
+    - type: CheckBox
+      properties: {text: "surgical"}
+      name: cb_surgical
+- type: Button
+  properties:
+    text: "Run Benchmark"
+    bold: true
+    role: obliterate-btn
+  name: run_bench_btn
+  event_bindings: {click: run_bench_btn_click}
+- type: Label
+  properties: {text: "", role: status-bar}
+  name: bench_status
+- type: Label
+  properties: {text: ""}
+  name: bench_results
+- type: TextArea
+  properties:
+    role: log-box
+    placeholder: "Benchmark log..."
+    height: 250
+    enabled: false
+  name: bench_log
