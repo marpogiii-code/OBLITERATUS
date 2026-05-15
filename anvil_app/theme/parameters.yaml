@@ -1,0 +1,12 @@
+color_scheme:
+  primary_color: '#1a1a2e'
+  secondary_color: '#16213e'
+  tertiary_color: '#0f3460'
+  primary_text: '#e0e0e0'
+  secondary_text: '#a0a0a0'
+  background: '#0a0a1a'
+  surface: '#1a1a2e'
+  error: '#cf6679'
+  success: '#4caf50'
+  warning: '#ff9800'
+roles: {}

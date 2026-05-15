@@ -1,0 +1,28 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Export Research Artifacts"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: Label
+  properties:
+    text: |
+      Download all intermediate data from your last obliteration run as a ZIP archive.
+      Contents: refusal_directions.pt, config.json, results.csv, pipeline_log.txt
+    font_size: 12
+    foreground: '#888'
+  name: description_label
+- type: Button
+  properties:
+    text: "Download Artifacts"
+    bold: true
+  name: export_btn
+  event_bindings: {click: export_btn_click}
+- type: Label
+  properties: {text: "", role: status-bar}
+  name: export_status

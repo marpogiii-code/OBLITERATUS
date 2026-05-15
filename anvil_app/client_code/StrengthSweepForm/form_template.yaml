@@ -1,0 +1,59 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Ablation Strength Sweep"
+    bold: true
+    font_size: 16
+  name: header_label
+- type: Label
+  properties:
+    text: "Sweep regularization from 0 (full removal) to 1 (no change) and plot refusal rate vs perplexity."
+    font_size: 12
+    foreground: '#888'
+  name: description_label
+- type: FlowPanel
+  properties: {spacing: medium}
+  name: settings_row
+  components:
+  - type: DropDown
+    properties: {placeholder: "Select Model..."}
+    name: sweep_model_dd
+  - type: DropDown
+    properties: {placeholder: "Method"}
+    name: sweep_method_dd
+  - type: DropDown
+    properties: {placeholder: "Prompt Volume"}
+    name: sweep_volume_dd
+  - type: DropDown
+    properties: {placeholder: "Dataset"}
+    name: sweep_dataset_dd
+  - type: TextBox
+    properties: {placeholder: "Sweep Points (3-15)", type: number, text: "6"}
+    name: sweep_steps
+- type: Button
+  properties:
+    text: "Run Sweep"
+    bold: true
+    role: obliterate-btn
+  name: sweep_btn
+  event_bindings: {click: sweep_btn_click}
+- type: Label
+  properties: {text: "", role: status-bar}
+  name: sweep_status
+- type: Label
+  properties: {text: "Click 'Run Sweep' to start."}
+  name: sweep_results
+- type: TextArea
+  properties:
+    role: log-box
+    placeholder: "Sweep log..."
+    height: 250
+    enabled: false
+  name: sweep_log
+- type: Image
+  properties: {visible: false}
+  name: sweep_plot

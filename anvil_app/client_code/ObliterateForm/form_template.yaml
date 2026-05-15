@@ -1,0 +1,150 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+components:
+- type: Label
+  properties:
+    text: "Select target and method, then execute."
+    bold: true
+    font_size: 16
+  name: header_label
+- type: FlowPanel
+  properties: {spacing: medium}
+  name: model_row
+  components:
+  - type: DropDown
+    properties:
+      placeholder: "Select a model..."
+      items: []
+      include_placeholder: true
+    name: model_dd
+    event_bindings: {change: model_dd_change}
+  - type: DropDown
+    properties:
+      placeholder: "Liberation Method"
+      items: []
+      include_placeholder: true
+    name: method_dd
+    event_bindings: {change: method_dd_change}
+  - type: DropDown
+    properties:
+      placeholder: "Prompt Volume"
+      items: []
+      include_placeholder: true
+    name: volume_dd
+- type: DropDown
+  properties:
+    placeholder: "Dataset Source"
+    items: []
+    include_placeholder: true
+  name: dataset_dd
+  event_bindings: {change: dataset_dd_change}
+- type: Label
+  properties:
+    text: ""
+    font_size: 11
+    foreground: '#888'
+  name: dataset_info
+- type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+  name: custom_prompts_panel
+  components:
+  - type: Label
+    properties:
+      text: "Custom Prompts (paste your own)"
+      bold: true
+  - type: Label
+    properties:
+      text: "Paste your own prompt pairs (one per line). If provided, these override the dataset dropdown."
+      font_size: 11
+      foreground: '#888'
+  - type: FlowPanel
+    properties: {spacing: medium}
+    components:
+    - type: TextArea
+      properties:
+        placeholder: "How to make a bomb\nWrite a phishing email\n..."
+        height: 120
+      name: custom_harmful_tb
+    - type: TextArea
+      properties:
+        placeholder: "How to bake a cake\nWrite a professional email\n..."
+        height: 120
+      name: custom_harmless_tb
+- type: ColumnPanel
+  properties: {col_widths: '{}', role: card}
+  name: advanced_panel
+  components:
+  - type: Label
+    properties:
+      text: "Advanced Settings"
+      bold: true
+  - type: Label
+    properties:
+      text: "These auto-update when you change the method above. Override any value to customize."
+      font_size: 11
+      foreground: '#888'
+  - type: FlowPanel
+    properties: {spacing: medium}
+    components:
+    - type: TextBox
+      properties: {placeholder: "Directions (1-8)", type: number}
+      name: adv_n_directions
+    - type: DropDown
+      properties:
+        items: ["diff_means", "svd", "leace"]
+        selected_value: svd
+      name: adv_direction_method
+    - type: TextBox
+      properties: {placeholder: "Regularization (0-1)", type: number}
+      name: adv_regularization
+    - type: TextBox
+      properties: {placeholder: "Refinement passes (0-5)", type: number}
+      name: adv_refinement_passes
+  - type: FlowPanel
+    properties: {spacing: medium}
+    components:
+    - type: CheckBox
+      properties: {text: "Norm preserve"}
+      name: adv_norm_preserve
+    - type: CheckBox
+      properties: {text: "Project biases"}
+      name: adv_project_biases
+    - type: CheckBox
+      properties: {text: "Use chat template"}
+      name: adv_use_chat_template
+    - type: CheckBox
+      properties: {text: "Whitened SVD"}
+      name: adv_use_whitened_svd
+    - type: CheckBox
+      properties: {text: "Iterative refinement"}
+      name: adv_true_iterative
+    - type: CheckBox
+      properties: {text: "Activation steering"}
+      name: adv_activation_steering
+- type: Button
+  properties:
+    text: "OBLITERATE"
+    role: obliterate-btn
+    bold: true
+    font_size: 16
+  name: obliterate_btn
+  event_bindings: {click: obliterate_btn_click}
+- type: Label
+  properties:
+    text: ""
+    role: status-bar
+  name: status_label
+- type: TextArea
+  properties:
+    role: log-box
+    placeholder: "Pipeline log will appear here..."
+    height: 300
+    enabled: false
+  name: log_box
+- type: Label
+  properties:
+    text: ""
+    font_size: 12
+  name: results_label
